@@ -41,3 +41,10 @@ model AuthKey {
   @@index([user_id])
   @@map("auth_key")
 }
+
+model Tag {
+  id        String  @id @unique
+  name      String
+  created   DateTime @default(now())
+  updated   DateTime @default(now())
+}
