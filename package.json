@@ -37,7 +37,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "^1.4.5",
 		"@lucia-auth/adapter-prisma": "^2.0.0",
-		"@prisma/client": "^5.2.0",
+		"@prisma/client": "^4.16.2",
 		"axios": "^1.4.0",
 		"flowbite": "^1.7.0",
 		"flowbite-svelte": "^0.40.2",
