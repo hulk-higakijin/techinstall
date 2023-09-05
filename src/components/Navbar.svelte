@@ -6,12 +6,11 @@
 <Navbar let:hidden let:toggle>
 	<NavBrand href="/">
 		<span class="self-center whitespace-nowrap text-xl font-semibold text-primary-700 dark:text-white">
-			エイガイコウヨ
+			TechInstall
 		</span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
 		<NavLi href="/" active={$page.url.pathname == '/'}>Home</NavLi>
-		<NavLi href="/movies" active={$page.url.pathname == '/movies'}>Movies</NavLi>
 	</NavUl>
 </Navbar>
