@@ -9,7 +9,7 @@ const config = {
 		extend: {}
 	},
 
-	plugins: [require('flowbite/plugin')],
+	plugins: [require('flowbite/plugin'), require('@tailwindcss/line-clamp')],
 
 	theme: {
 		extend: {
