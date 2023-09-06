@@ -1,15 +1,22 @@
 import prisma from '$lib/prisma';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from '../$types';
+import { youtubeSchema } from '$lib/schemas/youtubeSchema';
+import { superValidate } from 'sveltekit-superforms/server';
+
+export const load: PageServerLoad = async () => {
+	const form = await superValidate(youtubeSchema);
+	return { form };
+};
 
 export const actions: Actions = {
-	default: async ({ request, locals }) => {
-		const form = await request.formData();
-		const id = form.get('id');
-		const title = form.get('title');
-		const thumbnailUrl = form.get('thumbnailUrl');
+	default: async (event) => {
+		const form = await superValidate(event, youtubeSchema);
+		const { id, title, thumbnailUrl } = form.data;
 
-		if (typeof id !== 'string' || typeof title !== 'string' || typeof thumbnailUrl !== 'string')
-			return fail(400);
+		if (!form.valid) {
+			return fail(400, { form });
+		}
 
 		try {
 			const youtube = await prisma.youtube.create({
