@@ -15,8 +15,9 @@ model AuthUser {
   auth_session AuthSession[]
   auth_key     AuthKey[]
   username     String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @default(now())
+  isAdmin      Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now())
 
   @@map("user")
 }
@@ -45,7 +46,7 @@ model AuthKey {
 }
 
 model Youtube {
-  id           String @id @unique
+  id           String   @id @unique
   title        String
   thumbnailUrl String
   createdAt    DateTime @default(now())
@@ -53,7 +54,7 @@ model Youtube {
 }
 
 model Channel {
-  id        String @id @unique
+  id        String   @id @unique
   name      String
   avatarUrl String
   createdAt DateTime @default(now())
@@ -61,8 +62,8 @@ model Channel {
 }
 
 model Tag {
-  id        String  @id @unique
-  name      String
-  created   DateTime @default(now())
-  updated   DateTime @default(now())
+  id      String   @id @unique
+  name    String
+  created DateTime @default(now())
+  updated DateTime @default(now())
 }
