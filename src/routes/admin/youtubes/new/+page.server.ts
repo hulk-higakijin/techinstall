@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma';
-import { fail, type Actions, redirect } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
@@ -19,10 +19,10 @@ export const actions: Actions = {
 					thumbnailUrl
 				}
 			});
-
-			redirect(302, `/admin/youtubes`);
 		} catch (error) {
 			return fail(500);
 		}
+
+		throw redirect(303, '/admin/youtubes');
 	}
 };
