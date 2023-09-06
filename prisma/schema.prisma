@@ -59,3 +59,10 @@ model Channel {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+
+model Tag {
+  id        String  @id @unique
+  name      String
+  created   DateTime @default(now())
+  updated   DateTime @default(now())
+}
