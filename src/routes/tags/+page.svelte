@@ -10,7 +10,7 @@
 	<div class="grid grid-cols-4 gap-2">
 		{#each data.tags as tag}
 			<Card href="/tags/{tag.id}">
-				<h2>{tag.name}</h2>
+				<span class="text-center">{tag.name}</span>
 			</Card>
 		{/each}
 	</div>
