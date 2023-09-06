@@ -15,7 +15,7 @@
 </script>
 
 <div>
-	<div class="flex mb-2 mx-2">
+	<div class="flex mb-2">
 		<h1 class="font-semibold text-2xl">List of Youtubes</h1>
 		<Button href="/admin/youtubes/new" class="ml-auto">NEW</Button>
 	</div>
