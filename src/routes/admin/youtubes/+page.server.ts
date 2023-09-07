@@ -5,7 +5,7 @@ export const load = async (params: ServerLoadEvent) => {
 	const { user } = await params.locals.auth.validateUser();
 	if (!user || !user.isAdmin) throw redirect(302, '/login');
 
-	const youtubes = await prisma.youtube.findMany();
+	const youtubes = await prisma.youtube.findMany({ include: { channel: true } });
 
 	return { youtubes };
 };

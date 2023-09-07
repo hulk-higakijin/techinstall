@@ -30,6 +30,7 @@
 			<TableHeadCell>Thumbnail</TableHeadCell>
 			<TableHeadCell>Id</TableHeadCell>
 			<TableHeadCell>Title</TableHeadCell>
+			<TableHeadCell>Channel</TableHeadCell>
 			<TableHeadCell>Edit</TableHeadCell>
 			<TableHeadCell>Delete</TableHeadCell>
 		</TableHead>
@@ -45,6 +46,7 @@
 					>
 					<TableBodyCell>{youtube.id}</TableBodyCell>
 					<TableBodyCell>{youtube.title}</TableBodyCell>
+					<TableBodyCell>{youtube.channel.name}</TableBodyCell>
 					<TableBodyCell>
 						<Button href="/admin/youtubes/{youtube.id}/edit">Edit</Button>
 					</TableBodyCell>

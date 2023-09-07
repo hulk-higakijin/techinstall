@@ -53,9 +53,5 @@
 		/>
 		{#if $errors.channelId}<span class="text-red-500">{$errors.channelId[0]}</span>{/if}
 	</div>
-
-	<p>{$form.id}</p>
-	<p>{$form.channelId}</p>
-
 	<Button type="submit" disabled={$submitting}>Submit</Button>
 </form>

@@ -16,8 +16,6 @@ export const actions: Actions = {
 		const form = await superValidate(event, youtubeSchema);
 		const { id, title, thumbnailUrl, channelId } = form.data;
 
-		console.log(channelId)
-
 		if (!form.valid) {
 			return fail(400, { form });
 		}
@@ -32,7 +30,6 @@ export const actions: Actions = {
 				}
 			});
 		} catch (error) {
-			console.log(error)
 			return fail(500);
 		}
 
