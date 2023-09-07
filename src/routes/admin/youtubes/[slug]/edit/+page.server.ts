@@ -3,8 +3,8 @@ import { youtubeSchema } from '$lib/schemas/youtubeSchema';
 import { fail, type Actions, redirect, error } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
 
-export const load = async ({ params }) => {
-	const youtube = await prisma.youtube.findUnique({ where: { id: params.slug } });
+export const load = async (event) => {
+	const youtube = await prisma.youtube.findUnique({ where: { id: event.params.slug } });
 	const form = await superValidate(youtube, youtubeSchema);
 
 	if (!youtube) throw error(404);
