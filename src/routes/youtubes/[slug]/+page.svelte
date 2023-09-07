@@ -2,7 +2,8 @@
 	import YoutubeIframe from '$components/YoutubeIframe.svelte';
 
 	export let data;
-	const { youtube, otherYoutubes } = data;
+	const { otherYoutubes } = data;
+	$: youtube = data.youtube;
 </script>
 
 <div>
