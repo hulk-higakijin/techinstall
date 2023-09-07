@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let data;
+	const { channels } = data;
 	import YoutubeForm from '$components/youtubes/YoutubeForm.svelte';
 </script>
 
@@ -8,5 +9,5 @@
 		<h1 class="font-semibold text-2xl">NEW YOUTUBE</h1>
 	</div>
 
-	<YoutubeForm data={data.form} />
+	<YoutubeForm data={data.form} {channels} />
 </div>
