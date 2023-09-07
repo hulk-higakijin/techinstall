@@ -25,6 +25,7 @@
 			<TableHeadCell>THUMBNAIL</TableHeadCell>
 			<TableHeadCell>ID</TableHeadCell>
 			<TableHeadCell>TITLE</TableHeadCell>
+			<TableHeadCell>Edit</TableHeadCell>
 		</TableHead>
 		<TableBody>
 			{#each youtubes as youtube}
@@ -38,6 +39,7 @@
 					>
 					<TableBodyCell>{youtube.id}</TableBodyCell>
 					<TableBodyCell>{youtube.title}</TableBodyCell>
+					<TableHeadCell><a href="/admin/youtubes/{youtube.id}/edit">Edit</a></TableHeadCell>
 				</TableBodyRow>
 			{/each}
 		</TableBody>
