@@ -10,8 +10,13 @@
 	} from 'flowbite-svelte';
 
 	export let data;
-
 	const { youtubes } = data;
+
+	const handleDeleteSubmit = (event: Event) => {
+		if (!confirm('Are you sure?')) {
+			event.preventDefault();
+		}
+	};
 </script>
 
 <div>
@@ -22,10 +27,11 @@
 
 	<Table>
 		<TableHead>
-			<TableHeadCell>THUMBNAIL</TableHeadCell>
-			<TableHeadCell>ID</TableHeadCell>
-			<TableHeadCell>TITLE</TableHeadCell>
+			<TableHeadCell>Thumbnail</TableHeadCell>
+			<TableHeadCell>Id</TableHeadCell>
+			<TableHeadCell>Title</TableHeadCell>
 			<TableHeadCell>Edit</TableHeadCell>
+			<TableHeadCell>Delete</TableHeadCell>
 		</TableHead>
 		<TableBody>
 			{#each youtubes as youtube}
@@ -39,7 +45,18 @@
 					>
 					<TableBodyCell>{youtube.id}</TableBodyCell>
 					<TableBodyCell>{youtube.title}</TableBodyCell>
-					<TableHeadCell><a href="/admin/youtubes/{youtube.id}/edit">Edit</a></TableHeadCell>
+					<TableBodyCell>
+						<Button href="/admin/youtubes/{youtube.id}/edit">Edit</Button>
+					</TableBodyCell>
+					<TableBodyCell>
+						<form
+							method="POST"
+							action="?/delete&slug={youtube.id}"
+							on:submit={(e) => handleDeleteSubmit(e)}
+						>
+							<Button type="submit" color="red">Delete</Button>
+						</form>
+					</TableBodyCell>
 				</TableBodyRow>
 			{/each}
 		</TableBody>
