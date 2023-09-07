@@ -10,7 +10,8 @@
 	} from 'flowbite-svelte';
 
 	export let data;
-	const { youtubes } = data;
+
+	const { channels } = data;
 
 	const handleDeleteSubmit = (event: Event) => {
 		if (!confirm('Are you sure?')) {
@@ -21,39 +22,37 @@
 
 <div>
 	<div class="flex mb-2">
-		<h1 class="font-semibold text-2xl">List of Youtubes</h1>
-		<Button href="/admin/youtubes/new" class="ml-auto">NEW</Button>
+		<h1 class="font-semibold text-2xl">List of Channels</h1>
+		<Button href="/admin/channels/new" class="ml-auto">NEW</Button>
 	</div>
 
 	<Table>
 		<TableHead>
-			<TableHeadCell>Thumbnail</TableHeadCell>
+			<TableHeadCell>Avatar</TableHeadCell>
 			<TableHeadCell>Id</TableHeadCell>
-			<TableHeadCell>Title</TableHeadCell>
-			<TableHeadCell>Channel</TableHeadCell>
+			<TableHeadCell>Name</TableHeadCell>
 			<TableHeadCell>Edit</TableHeadCell>
 			<TableHeadCell>Delete</TableHeadCell>
 		</TableHead>
 		<TableBody>
-			{#each youtubes as youtube}
+			{#each channels as channel}
 				<TableBodyRow>
 					<TableBodyCell
 						><img
-							src={youtube.thumbnailUrl}
-							alt={youtube.title}
-							class="w-60 object-contain"
+							src={channel.avatarUrl}
+							alt={channel.name}
+							class="w-20 object-contain rounded"
 						/></TableBodyCell
 					>
-					<TableBodyCell>{youtube.id}</TableBodyCell>
-					<TableBodyCell>{youtube.title}</TableBodyCell>
-					<TableBodyCell>{youtube.channel.name}</TableBodyCell>
+					<TableBodyCell>{channel.id}</TableBodyCell>
+					<TableBodyCell>{channel.name}</TableBodyCell>
 					<TableBodyCell>
-						<Button href="/admin/youtubes/{youtube.id}/edit">Edit</Button>
+						<Button href="/admin/channels/{channel.id}/edit">Edit</Button>
 					</TableBodyCell>
 					<TableBodyCell>
 						<form
 							method="POST"
-							action="?/delete&slug={youtube.id}"
+							action="?/delete&slug={channel.id}"
 							on:submit={(e) => handleDeleteSubmit(e)}
 						>
 							<Button type="submit" color="red">Delete</Button>

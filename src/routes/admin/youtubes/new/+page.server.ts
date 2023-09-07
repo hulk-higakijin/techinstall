@@ -6,13 +6,15 @@ import { superValidate } from 'sveltekit-superforms/server';
 
 export const load: PageServerLoad = async () => {
 	const form = await superValidate(youtubeSchema);
-	return { form };
+	const channels = await prisma.channel.findMany()
+
+	return { channels, form };
 };
 
 export const actions: Actions = {
 	default: async (event) => {
 		const form = await superValidate(event, youtubeSchema);
-		const { id, title, thumbnailUrl } = form.data;
+		const { id, title, thumbnailUrl, channelId } = form.data;
 
 		if (!form.valid) {
 			return fail(400, { form });
@@ -23,7 +25,8 @@ export const actions: Actions = {
 				data: {
 					id,
 					title,
-					thumbnailUrl
+					thumbnailUrl,
+					channelId
 				}
 			});
 		} catch (error) {

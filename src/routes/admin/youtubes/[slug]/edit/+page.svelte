@@ -2,7 +2,7 @@
 	import YoutubeForm from "$components/youtubes/YoutubeForm.svelte";
 
 	export let data;
-	const { youtube } = data;
+	const { youtube, channels } = data;
 </script>
 
 <div>
@@ -10,5 +10,5 @@
 		<h1 class="font-semibold text-2xl">Edit {youtube.title}</h1>
 	</div>
 
-  <YoutubeForm data={data.form} />
+  <YoutubeForm data={data.form} {channels} />
 </div>
