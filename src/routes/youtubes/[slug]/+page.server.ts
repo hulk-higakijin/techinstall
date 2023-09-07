@@ -7,7 +7,9 @@ export const load = async ({ params }) => {
 		include: { channel: true }
 	});
 
+	const otherYoutubes = await prisma.youtube.findMany();
+
 	if (!youtube) throw error(404);
 
-	return { youtube };
+	return { youtube, otherYoutubes };
 };
