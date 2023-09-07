@@ -51,6 +51,8 @@ model Youtube {
   thumbnailUrl String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now())
+  channelId    String
+  channel     Channel  @relation(fields: [channelId], references: [id])
 }
 
 model Channel {
@@ -59,6 +61,7 @@ model Channel {
   avatarUrl String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+  youtubes  Youtube[]
 }
 
 model Tag {

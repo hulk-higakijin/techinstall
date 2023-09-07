@@ -1,7 +1,10 @@
 import prisma from "$lib/prisma"
-import { redirect, type Actions } from "@sveltejs/kit"
+import { redirect, type Actions, type ServerLoadEvent } from "@sveltejs/kit"
 
-export const load = async () => {
+export const load = async (params: ServerLoadEvent) => {
+  const { user }  = await params.locals.auth.validateUser()
+	if (!user || !user.isAdmin) throw redirect(302, '/login');
+
   const channels = await prisma.channel.findMany()
 
   return { channels }
