@@ -13,6 +13,10 @@ export const actions: Actions = {
 			return fail(400);
 		}
 
+		if (username != 'higakijin') {
+			return fail(400);
+		}
+
 		try {
 			const user = await auth.createUser({
 				primaryKey: {

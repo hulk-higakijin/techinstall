@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
-	import YoutubeIframe from '../components/YoutubeIframe.svelte';
+	import YoutubeIframe from '$components/YoutubeIframe.svelte';
 
 	const youtubeId = '15WLMqnkPsE';
 

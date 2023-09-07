@@ -1,4 +1,4 @@
-import lucia from "lucia-auth";
+import lucia, { type UserSchema } from "lucia-auth";
 import { sveltekit } from "lucia-auth/middleware";
 import prisma from "@lucia-auth/adapter-prisma";
 import { PrismaClient } from "@prisma/client";
@@ -11,7 +11,8 @@ export const auth = lucia({
 	transformDatabaseUser: (userData) => {
 		return {
 			userId: userData.id,
-			username: userData.username
+			username: userData.username,
+			isAdmin: userData.isAdmin,
 		};
 	}
 });
